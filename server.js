@@ -2,6 +2,7 @@ const express = require('express');
 const session = require('express-session');
 const passport = require('passport');
 const cookieParser = require('cookie-parser');
+const passportConfig = require('./passport/index');
 const app = express();
 
 app.use((req,res,next)=>{
@@ -9,6 +10,8 @@ app.use((req,res,next)=>{
     req.heini = 'heini';
     next();
 })
+
+passportConfig();
 
 app.use(session({
     secret : 'the', 
